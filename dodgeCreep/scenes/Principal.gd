@@ -17,6 +17,9 @@ func _fim_de_jogo():
 	$camadaCanvasHud/BtnStart.show()
 	exibir_pontuacao()
 	pontuacao = 0
+	$Musica.stop()
+	$Sommorte.play()
+	get_tree().call_group("mob", "queue_free")
 	pass
 	
 func _inicio_de_jogo():
@@ -26,6 +29,7 @@ func _inicio_de_jogo():
 	$TempoInicio.start()
 	$TempoMob.start()
 	$TempoPontuacao.start()
+	$Musica.play()
 	pass
 	
 
@@ -59,7 +63,8 @@ func instanciar_mob():
 	direcao_mob += rand_range(-PI / 4, PI / 4) 
 	mob.rotation = direcao_mob
 	
-	var velocidade = Vector2((rand_range(150.0,1000.0)),(0.0)) #instanciar a velocidade 
+	var velocidade = Vector2((rand_range(10.0 * pontuacao,20.0 * pontuacao)),(0.0))
+	
 	mob.linear_velocity = velocidade.rotated(direcao_mob)
 	
 	add_child(mob)

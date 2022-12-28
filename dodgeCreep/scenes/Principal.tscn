@@ -1,18 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Principal.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1021, 7, 0, 0, 0, 0, 1027, 375, 0, 0, 0, 0, 1021, 723, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
 }
 
 [node name="Principal" type="Node"]
 script = ExtResource( 2 )
 cena_mob = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -111.0
+margin_top = -66.0
+margin_right = 1126.0
+margin_bottom = 794.0
+color = Color( 0.0941176, 0.352941, 0.380392, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -30,8 +39,19 @@ position = Vector2( 240, 450 )
 curve = SubResource( 1 )
 
 [node name="localizacaoDoSpawDoMob" type="PathFollow2D" parent="CaminhoDosMob"]
+rotation = 0.00685592
 
 [node name="camadaCanvasHud" parent="." instance=ExtResource( 4 )]
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -4.023
+pitch_scale = 0.5
+
+[node name="Sommorte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -0.1
+pitch_scale = 0.7
 
 [connection signal="batida" from="Player" to="." method="_on_Player_batida"]
 [connection signal="timeout" from="TempoMob" to="." method="_on_TempoMob_timeout"]
