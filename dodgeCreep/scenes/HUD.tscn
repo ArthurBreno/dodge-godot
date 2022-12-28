@@ -22,9 +22,8 @@ font_data = SubResource( 3 )
 script = ExtResource( 2 )
 
 [node name="labelPontuacao" type="Label" parent="."]
-margin_left = 317.0
 margin_top = 5.0
-margin_right = 713.0
+margin_right = 1024.0
 margin_bottom = 164.0
 custom_fonts/font = SubResource( 1 )
 text = "-"
@@ -32,10 +31,9 @@ align = 1
 valign = 1
 
 [node name="LabelMensagem" type="Label" parent="."]
-margin_left = 285.0
-margin_top = 196.0
-margin_right = 744.0
-margin_bottom = 426.0
+margin_top = 227.0
+margin_right = 1036.0
+margin_bottom = 457.0
 custom_fonts/font = SubResource( 2 )
 text = "BEM
 VINDO"

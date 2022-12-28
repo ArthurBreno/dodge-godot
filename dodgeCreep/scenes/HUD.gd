@@ -23,9 +23,9 @@ func mostrar_game_over():
 	$BtnStart.show()
 	pass
 	
-func _modificar_pontuacao(pontuacao: int, morto_vivo: bool):
+func _modificar_pontuacao(pontuacao: int, morto_vivo: bool, dificuldade: String):
 	if morto_vivo == true:
-		$labelPontuacao.text = str(pontuacao)
+		$labelPontuacao.text = (str(pontuacao) + dificuldade)
 	else:
 		#var valor: String = (String)pontuacao
 		$labelPontuacao.text = ("-")

@@ -17,20 +17,20 @@ script = ExtResource( 2 )
 cena_mob = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -111.0
-margin_top = -66.0
-margin_right = 1126.0
-margin_bottom = 794.0
+margin_left = -92.0
+margin_top = -53.0
+margin_right = 1145.0
+margin_bottom = 807.0
 color = Color( 0.0941176, 0.352941, 0.380392, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="TempoMob" type="Timer" parent="."]
-wait_time = 0.3
 
 [node name="TempoPontuacao" type="Timer" parent="."]
 
 [node name="TempoInicio" type="Timer" parent="."]
+wait_time = 9.99
 
 [node name="PosicaoInicio" type="Position2D" parent="."]
 position = Vector2( 240, 450 )
@@ -46,7 +46,7 @@ rotation = 0.00685592
 [node name="Musica" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -4.023
-pitch_scale = 0.5
+pitch_scale = 0.15
 
 [node name="Sommorte" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
