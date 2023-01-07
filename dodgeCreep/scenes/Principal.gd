@@ -5,6 +5,7 @@ var pontuacao = 0
 var dificuldades = [ "", " - muito facil", " - facil", " - normal", " - um pouco dificil", " - dificil", " - muito dificil", " - AAAAAAAAAAAA"]
 var dificuldade_atual
 var contador_dificuldade = 1
+var se_pausado = true
 
 func _ready():
 	randomize()
@@ -20,9 +21,10 @@ func _fim_de_jogo():
 	$camadaCanvasHud/BtnStart.show()
 	exibir_pontuacao()
 	pontuacao = 0
-	$Musica.pitch_scale = 0.15
+	$Musica.pitch_scale = 0.20
 	$Musica.stop()
 	$Sommorte.play()
+	$camadaCanvasHud/Btnpause.hide()
 	get_tree().call_group("mob", "queue_free")
 	pass
 	
@@ -30,12 +32,13 @@ func _inicio_de_jogo():
 	randomize()
 	dificuldade_atual = dificuldades[1]
 	contador_dificuldade = 1
+	$TempoMob.wait_time = 1
 	$Player.carregar_personagem()
 	$TempoInicio.start()
 	$TempoMob.start()
 	$TempoPontuacao.start()
-	
 	$Musica.play()
+	$camadaCanvasHud/Btnpause.show()
 	pass
 	
 
@@ -43,7 +46,8 @@ func _on_TempoInicio_timeout():
 	contador_dificuldade += 1
 	dificuldade_atual = dificuldades[contador_dificuldade]
 	get_tree().call_group("mob", "queue_free")
-	$Musica.pitch_scale = 0.15 * contador_dificuldade
+	$Musica.pitch_scale = 0.20 * contador_dificuldade
+	$TempoMob.wait_time = $TempoMob.wait_time / 2
 	# realizar update do texto e da dificuldade do jogo
 	pass # Replace with function body.
 
@@ -91,5 +95,28 @@ func _on_Player_batida():
 	
 func exibir_pontuacao():
 	$camadaCanvasHud._modificar_pontuacao(pontuacao, false, dificuldade_atual)
-	
 	pass
+
+func _on_camadaCanvasHud_btn_apertado_pouse():
+	if(se_pausado):
+		get_tree().paused = true
+		$camadaCanvasHud/Btnpause.text = "RESUME"
+		#pausar timers
+		$TempoMob.paused = true
+		$TempoPontuacao.paused = true
+		$TempoInicio.paused = true
+		se_pausado = false
+		print("pausado")
+		return
+	if(!se_pausado):
+		get_tree().paused = false
+		$camadaCanvasHud/Btnpause.text = "PAUSAR"
+		#resumir timers
+		$TempoMob.paused = false
+		$TempoPontuacao.paused = false
+		$TempoInicio.paused = false
+		se_pausado = true
+		print("despausado")
+		return
+	
+	pass # Replace with function body.

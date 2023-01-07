@@ -13,6 +13,7 @@ func _ready():
 	$AnimatedSprite.animation = tipo_de_mob[randi() % tipo_de_mob.size()]
 	
 	pass # Replace with function body.
+	
 
 
 

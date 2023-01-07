@@ -31,6 +31,8 @@ radius = 12.0
 height = 14.0
 
 [node name="Mob" type="RigidBody2D" groups=["mob"]]
+pause_mode = 2
+physics_interpolation_mode = 2
 position = Vector2( 200, 109 )
 collision_mask = 0
 gravity_scale = 0.0
