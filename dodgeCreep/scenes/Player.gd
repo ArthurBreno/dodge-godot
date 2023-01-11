@@ -2,7 +2,7 @@ extends Area2D
 
 signal batida
 
-export var velocidade = 400
+export var velocidade = 300
 var tamanho_da_tela
 var direcao
 
@@ -53,23 +53,23 @@ pass
 func movimentar_e_animar(vetor: Vector2, delta: float):
 	if vetor.length() > 0:
 		vetor = vetor.normalized() * velocidade
-		if vetor.x == 400:
+		if vetor.x == velocidade:
 			$AnimatedSprite.animation = "direita"
 			$AnimatedSprite.flip_h = false
 			$AnimatedSprite.flip_v = false
 			$AnimatedSprite.play()
-		elif vetor.x == -400:
+		elif vetor.x == (-1* velocidade):
 			$AnimatedSprite.animation = "direita"
 			$AnimatedSprite.flip_h = true
 			$AnimatedSprite.flip_v = false
 			$AnimatedSprite.play()
 		
-		elif vetor.y == 400:
+		elif vetor.y == velocidade:
 			$AnimatedSprite.animation = "cima"
 			$AnimatedSprite.flip_v = true
 			$AnimatedSprite.play()
 		
-		elif vetor.y == -400:
+		elif vetor.y == (-1* velocidade):
 			$AnimatedSprite.animation = "cima"
 			$AnimatedSprite.flip_v = false
 			$AnimatedSprite.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Principal.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
 [ext_resource path="res://art/background.png" type="Texture" id=7]
+[ext_resource path="res://art/podezim.mp3" type="AudioStream" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -30,8 +31,7 @@ texture = ExtResource( 7 )
 [node name="TempoInicio" type="Timer" parent="."]
 wait_time = 9.99
 
-[node name="PosicaoInicio" type="Position2D" parent="."]
-position = Vector2( 240, 450 )
+[node name="TimerOneShot" type="Timer" parent="."]
 
 [node name="CaminhoDosMob" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -51,9 +51,15 @@ stream = ExtResource( 6 )
 volume_db = -0.1
 pitch_scale = 0.7
 
+[node name="podezim" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+pitch_scale = 0.65
+
 [connection signal="batida" from="Player" to="." method="_on_Player_batida"]
 [connection signal="timeout" from="TempoMob" to="." method="_on_TempoMob_timeout"]
 [connection signal="timeout" from="TempoPontuacao" to="." method="_on_TempoPontuacao_timeout"]
 [connection signal="timeout" from="TempoInicio" to="." method="_on_TempoInicio_timeout"]
+[connection signal="timeout" from="TimerOneShot" to="." method="_on_TimerOneShot_timeout"]
 [connection signal="btn_apertado" from="camadaCanvasHud" to="." method="_on_camadaCanvasHud_btn_apertado"]
+[connection signal="btn_apertado_poder" from="camadaCanvasHud" to="." method="_on_camadaCanvasHud_btn_apertado_poder"]
 [connection signal="btn_apertado_pouse" from="camadaCanvasHud" to="." method="_on_camadaCanvasHud_btn_apertado_pouse"]

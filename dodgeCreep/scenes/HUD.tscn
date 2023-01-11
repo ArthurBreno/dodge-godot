@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=2]
@@ -17,6 +17,10 @@ size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -57,11 +61,10 @@ icon_align = 1
 [node name="TimerMensagem" type="Timer" parent="."]
 
 [node name="Btnpause" type="Button" parent="."]
-visible = false
-margin_left = 813.0
-margin_top = 21.0
-margin_right = 1025.0
-margin_bottom = 177.0
+margin_left = 809.0
+margin_top = 3.0
+margin_right = 1021.0
+margin_bottom = 159.0
 input_pass_on_modal_close_click = false
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -73,6 +76,15 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Btnpoder" type="Button" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 233.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 5 )
+text = "podezim"
+
 [connection signal="pressed" from="BtnStart" to="." method="_on_BtnStart_pressed"]
 [connection signal="timeout" from="TimerMensagem" to="." method="_on_TimerMensagem_timeout"]
 [connection signal="pressed" from="Btnpause" to="." method="_on_Btnpause_pressed"]
+[connection signal="pressed" from="Btnpoder" to="." method="_on_Btnpoder_pressed"]

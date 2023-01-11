@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal btn_apertado
 signal btn_apertado_pouse
+signal btn_apertado_poder
 
 func _ready():
 	pass # Replace with function body.
@@ -50,6 +51,6 @@ func _on_TimerMensagem_timeout():
 func _on_Btnpause_pressed():
 	emit_signal("btn_apertado_pouse")
 pass 
-
-
-
+func _on_Btnpoder_pressed():
+	emit_signal("btn_apertado_poder")
+	pass # Replace with function body.

@@ -14,7 +14,18 @@ func _ready():
 	
 	pass # Replace with function body.
 	
-
+func pausar_animacao():
+	$AnimatedSprite.playing = false
+	pass
+	
+func resumir_animacao():
+	$AnimatedSprite.playing = true
+	pass
+	
+func pausar_creeps():
+	for membro in get_tree().get_nodes_in_group("mob"):
+		membro.linear_velocity = Vector2.ZERO
+	pass
 
 
 func _on_VisibilityNotifier2D_screen_exited():
